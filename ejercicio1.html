@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Funciones Simples, Anónimas y Flecha</title>
+    <style>
+        /* ===== Estilo general ===== */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f0ff; /* Fondo lila muy suave */
+            color: #4b0082; /* Morado oscuro para textos */
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #6a0dad;
+        }
+
+        h2 {
+            color: #7b1fa2;
+            border-bottom: 2px solid #d1c4e9;
+            padding-bottom: 5px;
+        }
+
+        /* ===== Estilo inputs ===== */
+        input[type="number"],
+        input[type="text"] {
+            padding: 5px 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #b39ddb;
+            width: 150px;
+        }
+
+        /* ===== Estilo botones ===== */
+        button {
+            background-color: #7b1fa2;
+            color: white;
+            border: none;
+            padding: 7px 15px;
+            border-radius: 8px;
+            margin: 5px 0 10px 0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #9c27b0;
+        }
+
+        /* ===== Estilo resultados ===== */
+        p {
+            background-color: #ede7f6;
+            padding: 5px 10px;
+            border-radius: 5px;
+            width: fit-content;
+            min-width: 200px;
+        }
+
+        /* Contenedor para secciones */
+        div.seccion {
+            background-color: #f3e5f5;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Funciones con Diferentes Tipos</h1>
+
+    <!-- ===================== -->
+    <!-- FUNCIONES SIMPLES -->
+    <!-- ===================== -->
+    <div class="seccion">
+        <h2>Funciones Simples</h2>
+
+        Base: <input id="base" type="number"><br>
+        Altura: <input id="altura" type="number"><br>
+        <button onclick="
+            document.getElementById('resultadoArea').innerText =
+            'Área: ' + calcularArea(Number(document.getElementById('base').value), Number(document.getElementById('altura').value))
+        ">Calcular Área</button>
+        <p id="resultadoArea"></p>
+
+        Número 1: <input id="num1" type="number"><br>
+        Número 2: <input id="num2" type="number"><br>
+        <button onclick="
+            document.getElementById('resultadoMayor').innerText =
+            'Mayor: ' + mostrarMayor(Number(document.getElementById('num1').value), Number(document.getElementById('num2').value))
+        ">Mostrar Mayor</button>
+        <p id="resultadoMayor"></p>
+
+        Dólares: <input id="dolares" type="number"><br>
+        <button onclick="
+            document.getElementById('resultadoMoneda').innerText =
+            'Soles: ' + convertirMoneda(Number(document.getElementById('dolares').value))
+        ">Convertir</button>
+        <p id="resultadoMoneda"></p>
+
+        Texto: <input id="texto" type="text"><br>
+        <button onclick="
+            document.getElementById('resultadoTexto').innerText =
+            'Cantidad de letras: ' + contarTexto(document.getElementById('texto').value)
+        ">Contar Letras</button>
+        <p id="resultadoTexto"></p>
+    </div>
+
+    <!-- ===================== -->
+    <!-- FUNCIONES ANÓNIMAS -->
+    <!-- ===================== -->
+    <div class="seccion">
+        <h2>Funciones Anónimas</h2>
+
+        Número para par/impar: <input id="numParImpar" type="number"><br>
+        <button onclick="
+            document.getElementById('resultadoParImpar').innerText =
+            esParImpar(Number(document.getElementById('numParImpar').value))
+        ">Ver Par/Impar</button>
+        <p id="resultadoParImpar"></p>
+
+        Nombre: <input id="nombreSaludo" type="text"><br>
+        <button onclick="
+            document.getElementById('resultadoSaludo').innerText =
+            saludoNombre(document.getElementById('nombreSaludo').value)
+        ">Saludar</button>
+        <p id="resultadoSaludo"></p>
+
+        Precio: <input id="precio" type="number"><br>
+        <button onclick="
+            document.getElementById('resultadoDescuento').innerText =
+            'Precio con 10% de descuento: ' + descuento(Number(document.getElementById('precio').value))
+        ">Calcular Descuento</button>
+        <p id="resultadoDescuento"></p>
+
+        Número N: <input id="numHastaN" type="number"><br>
+        <button onclick="
+            document.getElementById('resultadoHastaN').innerText =
+            mostrarHastaN(Number(document.getElementById('numHastaN').value))
+        ">Mostrar del 1 hasta N</button>
+        <p id="resultadoHastaN"></p>
+    </div>
+
+    <!-- ===================== -->
+    <!-- FUNCIONES FLECHA -->
+    <!-- ===================== -->
+    <div class="seccion">
+        <h2>Funciones Flecha</h2>
+
+        Número para cuadrado: <input id="numCuadrado" type="number"><br>
+        <button onclick="
+            document.getElementById('resultadoCuadrado').innerText =
+            'Cuadrado: ' + cuadrado(Number(document.getElementById('numCuadrado').value))
+        ">Calcular Cuadrado</button>
+        <p id="resultadoCuadrado"></p>
+
+        Edad: <input id="edad" type="number"><br>
+        <button onclick="
+            document.getElementById('resultadoEdad').innerText =
+            mayorMenorEdad(Number(document.getElementById('edad').value))
+        ">Ver Mayor/Menor de edad</button>
+        <p id="resultadoEdad"></p>
+
+        Números separados por comas: <input id="arrayNumeros" type="text" placeholder="Ej: 1,2,3,4"><br>
+        <button onclick="
+            const arr = document.getElementById('arrayNumeros').value.split(',').map(Number);
+            document.getElementById('resultadoSumaArray').innerText =
+            'Suma total: ' + sumarArray(arr)
+        ">Sumar Array</button>
+        <p id="resultadoSumaArray"></p>
+    </div>
+
+    <!-- ===================== -->
+    <!-- SCRIPT CON TODAS LAS FUNCIONES -->
+    <!-- ===================== -->
+    <script>
+        // ===== FUNCIONES SIMPLES =====
+        function calcularArea(base, altura) { return base * altura; }
+        function mostrarMayor(num1, num2) {
+            num1 = Number(num1); num2 = Number(num2);
+            if (num1 > num2) return num1;
+            else if (num2 > num1) return num2;
+            else return 'Los números son iguales';
+        }
+        function convertirMoneda(dolares) { return dolares * 3.7; }
+        function contarTexto(texto) { return texto.length; }
+
+        // ===== FUNCIONES ANÓNIMAS =====
+        const esParImpar = function(num) {
+            return (num % 2 === 0) ? num + ' es par' : num + ' es impar';
+        };
+        const saludoNombre = function(nombre) {
+            return 'Hola, ' + nombre + '!';
+        };
+        const descuento = function(precio) {
+            return precio * 0.9;
+        };
+        const mostrarHastaN = function(n) {
+            let resultado = '';
+            for(let i = 1; i <= n; i++) {
+                resultado += i + (i < n ? ', ' : '');
+            }
+            return resultado;
+        };
+
+        // ===== FUNCIONES FLECHA =====
+        const cuadrado = (num) => num * num;
+        const mayorMenorEdad = (edad) => edad >= 18 ? 'Mayor de edad' : 'Menor de edad';
+        const sumarArray = (arr) => arr.reduce((acum, val) => acum + val, 0);
+    </script>
+</body>
+</html>
